@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by The Boeing Company (The Boeing Company) -->
+<xs:schema xmlns:msg="com.boeing.awacs.b4045.mcs.message" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xs:attribute name="mnemonic" type="xs:string" />
+	<xs:simpleType name="NoDataType">
+		<xs:annotation>
+			<xs:documentation>(U) Defines a NoData enumeration for choice usage</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:byte">
+			<xs:enumeration value="0" msg:mnemonic="IS_NO_DATA" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IbrChannelIdType">
+		<xs:annotation>
+			<xs:documentation>(U) Channel ID (1 - 4) on the IBR</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedShort">
+			<xs:minInclusive value="1" />
+			<xs:maxInclusive value="4" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="IbrChannelConfigType">
+		<xs:annotation>
+			<xs:documentation>(U) Mission Planning defined parameters for one IBR channel</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="channelId" type="IbrChannelIdType" />
+			<xs:element name="frequency" type="IbrFrequencyType" />
+			<xs:element name="link" type="IbrLinkType" />
+			<xs:element name="dataRate" type="IbrDataRateType" />
+			<xs:element name="modulation" type="IbrModulationType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="IbrDataRateType">
+		<xs:annotation>
+			<xs:documentation>(U) baud</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:byte">
+			<xs:enumeration value="0" msg:mnemonic="BAUD_2400" />
+			<xs:enumeration value="1" msg:mnemonic="BAUD_4800" />
+			<xs:enumeration value="2" msg:mnemonic="BAUD_9600" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IbrFrequencyType">
+		<xs:annotation>
+			<xs:documentation>(U) Hertz</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="240000000" />
+			<xs:maxInclusive value="270000000" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IbrLinkType">
+		<xs:annotation>
+			<xs:documentation>(U) aka Broadcast type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:byte">
+			<xs:enumeration value="0" msg:mnemonic=" IBS_S " />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IbrModulationType">
+		<xs:annotation>
+			<xs:documentation>(U) Modulation on a given Channel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:byte">
+			<xs:enumeration value="0" msg:mnemonic="BPSK" />
+			<xs:enumeration value="1" msg:mnemonic="QPSK" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="IbrReceiverChannelConfig">
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>(U) Mission Planning specified configuration of IBR Channels</xs:documentation>
+			</xs:annotation>
+			<xs:sequence maxOccurs="4">
+				<xs:element name="channelConfig" type="IbrChannelConfigType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

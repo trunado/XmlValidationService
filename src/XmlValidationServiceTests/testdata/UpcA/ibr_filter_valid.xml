@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<IbrFilterConfig>
+  <radius>5</radius>
+  <TOI_Window>5000</TOI_Window>
+</IbrFilterConfig>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<IbrReceiverChannelConfig>
+  <channelConfig>
+    <channelID>4</channelID>
+    <frequency>345000000</frequency>
+    <link>0</link>
+    <dataRate>0</dataRate>
+    <modulation>0</modulation>
+  </channelConfig>
+</IbrReceiverChannelConfig>
